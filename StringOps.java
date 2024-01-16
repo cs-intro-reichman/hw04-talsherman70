@@ -36,7 +36,7 @@ public class StringOps {
             if(c == 'a' ||c == 'e' ||c == 'i' ||c == 'o' ||c == 'u'){
                 c = (char) (c - 'a' + 'A');
             }
-            else if ('A' <= c && c <='Z') {
+            else if (('A' < c && c <'E')||('E' < c && c <'I')||('I' < c && c <'O')||('O' < c && c <='Z' && c != 'U')) {
                     c = (char) (c - 'A' + 'a');
             }
 
@@ -64,14 +64,21 @@ public class StringOps {
         }
         return change;
     }
-
+    //Gets a string and a char and returns an array of integers, that contains all the indexes of the string where the char appears in
     public static int[] allIndexOf (String string, char chr) {
-        int[] array = new int[string.length()];
+        int count = 0;
+         for (int i = 0; i < string.length(); i++){
+            if(chr == string.charAt(i)){
+                count++;
+            }
+        }
+        int[] array = new int[count];
         int j = 0;
         for (int i = 0; i < string.length(); i++){
             if(chr == string.charAt(i)){
                 array[j] = i;
                 j++;
+                
             }
         }
         return array;
